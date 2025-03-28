@@ -7,8 +7,6 @@ from omegaconf import DictConfig, OmegaConf
 # This automatically reads in the configuration
 @hydra.main(version_base=None, config_path=".", config_name="config")
 def go(config: DictConfig):
-    print(config)
-    print(type(config["main"]["execute_steps"]))
 
     # Set up the wandb experiment. All runs will be grouped under this name
     os.environ["WANDB_PROJECT"] = config["main"]["project_name"]
@@ -77,7 +75,7 @@ def go(config: DictConfig):
                 "artifact_root": "data",
                 "artifact_type": "segregated_data",
                 "test_size": config["data"]["test_size"],
-                "random_state": config["data"]["random_state"],
+                "random_state": config["random_forest_pipeline"]["random_forest"]["random_state"],
                 "stratify": config["data"]["stratify"],
             },
         )
