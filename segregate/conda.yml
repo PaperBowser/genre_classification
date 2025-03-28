@@ -7,7 +7,7 @@ dependencies:
   - requests
   - pip
   - pandas
-  - scikit-learn
+  - scikit-learn=1.1.0
   - mlflow
   - pip:
       - wandb
